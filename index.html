@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Agriculture Management</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5faf5;
+    color: #263d2c;
+}
+
+/* HEADER */
+header {
+    background: white;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #247a38;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: #315c37;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #67a947;
+}
+
+/* HERO */
+.hero {
+    min-height: 540px;
+    background:
+    linear-gradient(rgba(0,40,10,.58),rgba(0,40,10,.58)),
+    url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600") center/cover;
+    display: flex;
+    align-items: center;
+    padding: 60px 8%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    padding: 14px 28px;
+    background: #8bc34a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.hero button:hover {
+    background: #558b2f;
+}
+
+/* GENERAL SECTIONS */
+section {
+    padding: 65px 7%;
+}
+
+.section-title {
+    text-align: center;
+    color: #287a38;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #66796a;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* ABOUT */
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about h2 {
+    color: #287a38;
+    font-size: 29px;
+    margin-bottom: 18px;
+}
+
+.about p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* CROP CARDS */
+.crop-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 25px;
+}
+
+.crop-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #ddd;
+    transition: .3s;
+}
+
+.crop-card:hover {
+    transform: translateY(-7px);
+}
+
+.crop-card img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+}
+
+.crop-info {
+    padding: 18px;
+}
+
+.crop-info h3 {
+    color: #287a38;
+    margin-bottom: 10px;
+}
+
+.crop-info p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* FARMING */
+.farming-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 22px;
+}
+
+.farming-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.farming-card .emoji {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.farming-card h3 {
+    color: #287a38;
+    margin-bottom: 12px;
+}
+
+.farming-card p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* FERTILIZERS */
+.fertilizer {
+    background: #e5f3df;
+}
+
+.fertilizer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.fertilizer-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.fertilizer-card h3 {
+    color: #287a38;
+    margin-bottom: 12px;
+}
+
+/* IRRIGATION */
+.irrigation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 22px;
+}
+
+.irrigation-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.irrigation-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.irrigation-card h3 {
+    color: #287a38;
+    margin-bottom: 10px;
+}
+
+/* WEATHER */
+.weather {
+    background: #e5f3df;
+    text-align: center;
+}
+
+.weather-box {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.weather-box input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 65%;
+}
+
+.weather-box button {
+    padding: 12px 18px;
+    background: #287a38;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CONTACT */
+.contact {
+    background: white;
+}
+
+.contact-form {
+    max-width: 550px;
+    margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #cbdcc9;
+    border-radius: 6px;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.contact-form button {
+    background: #287a38;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: #205c30;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+@media(max-width:700px) {
+    header {
+        gap: 15px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 45px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">🌱 Smart Agriculture</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#crops">Crops</a>
+        <a href="#farming">Farming</a>
+        <a href="#fertilizer">Fertilizers</a>
+        <a href="#irrigation">Irrigation</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Welcome to Smart Agriculture Management</h1>
+
+        <p>
+            Agriculture is the backbone of our country.
+            Discover modern farming techniques, crop
+            information, irrigation methods and sustainable
+            agriculture for a better future.
+        </p>
+
+        <button onclick="document.getElementById('crops').scrollIntoView()">
+            Explore Crops
+        </button>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+
+    <h2 class="section-title">About Agriculture</h2>
+
+    <p class="section-subtitle">
+        Growing a greener and healthier future through smart farming.
+    </p>
+
+    <div class="about">
+
+        <img
+        src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?w=900"
+        alt="Beautiful green agricultural farm">
+
+        <div>
+            <h2>Importance of Agriculture</h2>
+
+            <p>
+                Agriculture is the process of growing crops
+                and raising animals for food and other useful
+                products.
+            </p>
+
+            <p>
+                It plays an important role in the Indian
+                economy by providing food, employment and
+                raw materials for industries.
+            </p>
+
+            <p>
+                Modern agriculture uses technology,
+                machinery, irrigation and scientific methods
+                to improve farming practices.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CROPS -->
+<section id="crops" style="background:#eaf5e9;">
+
+    <h2 class="section-title">Popular Crops</h2>
+
+    <p class="section-subtitle">
+        Learn about different agricultural crops.
+    </p>
+
+    <div class="crop-container">
+
+        <div class="crop-card">
+            <img src="https://images.unsplash.com/photo-1536630596251-b7b1e9f7b7b3?w=600" alt="Rice crop">
+            <div class="crop-info">
+                <h3>🌾 Rice</h3>
+                <p>Rice is an important food crop grown in many regions of India.</p>
+            </div>
+        </div>
+
+        <div class="crop-card">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=600" alt="Wheat crop">
+            <div class="crop-info">
+                <h3>🌿 Wheat</h3>
+                <p>Wheat is a major cereal crop used to prepare flour and food products.</p>
+            </div>
+        </div>
+
+        <div class="crop-card">
+            <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=600" alt="Vegetables">
+            <div class="crop-info">
+                <h3>🥬 Vegetables</h3>
+                <p>Vegetables provide essential vitamins and minerals for healthy living.</p>
+            </div>
+        </div>
+
+        <div class="crop-card">
+            <img src="https://images.unsplash.com/photo-1601593768794-8f8c4b2a1f1b?w=600" alt="Cotton">
+            <div class="crop-info">
+                <h3>🌱 Cotton</h3>
+                <p>Cotton is an important commercial crop used in textile industries.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FARMING TECHNIQUES -->
+<section id="farming">
+
+    <h2 class="section-title">Modern Farming Techniques</h2>
+
+    <p class="section-subtitle">
+        New technologies make farming more efficient.
+    </p>
+
+    <div class="farming-grid">
+
+        <div class="farming-card">
+            <div class="emoji">🚜</div>
+            <h3>Mechanized Farming</h3>
+            <p>Using tractors and agricultural machines to make farming tasks easier.</p>
+        </div>
+
+        <div class="farming-card">
+            <div class="emoji">🌿</div>
+            <h3>Organic Farming</h3>
+            <p>Growing crops using organic materials and environmentally friendly practices.</p>
+        </div>
+
+        <div class="farming-card">
+            <div class="emoji">🛰️</div>
+            <h3>Smart Farming</h3>
+            <p>Using sensors, drones and technology to monitor agricultural fields.</p>
+        </div>
+
+        <div class="farming-card">
+            <div class="emoji">🌾</div>
+            <h3>Crop Rotation</h3>
+            <p>Growing different crops in sequence to support soil health.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- FERTILIZERS -->
+<section class="fertilizer" id="fertilizer">
+
+    <h2 class="section-title">Fertilizer Information</h2>
+
+    <p class="section-subtitle">
+        Fertilizers provide nutrients required for plant growth.
+    </p>
+
+    <div class="fertilizer-grid">
+
+        <div class="fertilizer-card">
+            <h3>🌱 Organic Fertilizers</h3>
+            <p>Examples: Compost, farmyard manure and vermicompost.</p>
+        </div>
+
+        <div class="fertilizer-card">
+            <h3>🧪 Nitrogen Fertilizers</h3>
+            <p>Help plants develop healthy leaves and vegetative growth.</p>
+        </div>
+
+        <div class="fertilizer-card">
+            <h3>🌿 Phosphorus Fertilizers</h3>
+            <p>Support root development and plant growth.</p>
+        </div>
+
+        <div class="fertilizer-card">
+            <h3>🍀 Potassium Fertilizers</h3>
+            <p>Support plant health and help plants manage environmental stress.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- IRRIGATION -->
+<section id="irrigation">
+
+    <h2 class="section-title">Irrigation Methods</h2>
+
+    <p class="section-subtitle">
+        Different ways to supply water to agricultural crops.
+    </p>
+
+    <div class="irrigation-grid">
+
+        <div class="irrigation-card">
+            <img src="https://images.unsplash.com/photo-1560693225-b8507d383e43?w=600" alt="Drip irrigation">
+            <h3>Drip Irrigation</h3>
+            <p>Water is supplied near plant roots through pipes and emitters.</p>
+        </div>
+
+        <div class="irrigation-card">
+            <img src="https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=600" alt="Sprinkler irrigation">
+            <h3>Sprinkler Irrigation</h3>
+            <p>Water is distributed over crops in the form of artificial rainfall.</p>
+        </div>
+
+        <div class="irrigation-card">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600" alt="Farm field">
+            <h3>Surface Irrigation</h3>
+            <p>Water flows over the soil surface to reach crop roots.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- WEATHER INFORMATION -->
+<section class="weather" id="weather">
+
+    <h2 class="section-title">Agriculture Weather Information</h2>
+
+    <p class="section-subtitle">
+        Check weather information from a weather service.
+    </p>
+
+    <div class="weather-box">
+
+        <h3>🌤️ Weather Search</h3>
+        <br>
+
+        <input type="text" id="city" placeholder="Enter city name">
+
+        <button onclick="searchWeather()">Search</button>
+
+        <p id="weatherMessage" style="margin-top:20px;">
+            Enter a city to check its weather.
+        </p>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <p class="section-subtitle">
+        Send us your questions and suggestions.
+    </p>
+
+    <div class="contact-form">
+
+        <form onsubmit="sendMessage(event)">
+
+            <input type="text" id="name" placeholder="Your Name" required>
+
+            <input type="email" id="email" placeholder="Your Email" required>
+
+            <input type="text" id="subject" placeholder="Subject" required>
+
+            <textarea id="message" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Submit Message</button>
+
+        </form>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>🌱 Smart Agriculture Management</h2>
+
+    <p>Promoting Smart Farming and Sustainable Agriculture</p>
+
+    <p>© 2026 Smart Agriculture Website. All Rights Reserved.</p>
+
+</footer>
+
+<script>
+
+// CONTACT FORM
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+
+    alert("Thank you " + name + "! Your message has been received in this demo.");
+
+    document.querySelector(".contact-form form").reset();
+
+}
+
+// WEATHER SEARCH
+// Opens an external weather website for the entered city.
+function searchWeather() {
+
+    let city = document.getElementById("city").value.trim();
+
+    if (city === "") {
+        alert("Please enter a city name");
+        return;
+    }
+
+    document.getElementById("weatherMessage").textContent =
+        "Opening weather information for " + city + "...";
+
+    window.open(
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(city + " current weather"),
+        "_blank"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
